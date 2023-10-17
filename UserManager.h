@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include "User.h"
+#include "HelperMethods.h"
 //#include "UsersFile.h"
 
 using namespace std;
