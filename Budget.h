@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <conio.h>
+#include "UserManager.h"
 
 using namespace std;
 
@@ -12,10 +13,10 @@ class Budget {
 
 public:
 
-    Budget (string usersFileName)
+ /*   Budget (string usersFileName)
         : userManager(usersFileName) {
     };
-
+*/
     void userRegistration();
     void showUsers();
     void logging();
