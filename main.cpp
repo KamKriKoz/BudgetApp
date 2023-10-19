@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 
-    Budget budget;
+    Budget budget("Users.xml");
     char choose;
 
     while(1) {
@@ -46,7 +46,7 @@ int main() {
             budget.userMenu();
             choose = getch();
 
-            switch (choose) {
+            switch(choose) {
 
             case '7':
                 budget.passwordChange();

@@ -10,9 +10,9 @@ void UserManager::userRegistration() {
     system ("cls");
     User person = enterNewUserDetails();
     users.push_back(person);
- //   usersFile.addToUsersFile(person);
+    usersFile.addToUsersFile(person);
 
-    cout << "Account created" << endl;
+    cout << "Account created." << endl;
     system ("pause");
     cout << endl;
 }
@@ -75,7 +75,7 @@ void UserManager::passwordChange() {
             system("pause");
         }
     }
-  //  usersFile.overwriteUsersFile(users);
+   usersFile.overwriteUsersFile(users);
 }
 
 void UserManager::loggingOut() {
@@ -94,14 +94,13 @@ void UserManager::showSingleUser(size_t i) {
     cout << endl;
     cout << "User ID number: \t" << users[i].getId() << endl;
     cout << "User login: \t\t" << users[i].getLogin() << endl;
-    //cout << "User password: \t\t" << users[i].getPassword() << endl;
 }
 
 User UserManager::enterNewUserDetails() {
 
     User person;
     person.setId(getNewUserId());
-    string login, password;
+    string login, password, name, surname;
 
     do {
         cout << "Enter your login: ";
@@ -112,6 +111,14 @@ User UserManager::enterNewUserDetails() {
     cout << "Enter your password: ";
     password = HelperMethods::loadLine();
     person.setPassword(password);
+
+    cout << "Enter your name: ";
+    name = HelperMethods::loadLine();
+    person.setName(name);
+
+    cout << "Enter your surname: ";
+    surname = HelperMethods::loadLine();
+    person.setSurname(surname);
 
     return person;
 }
