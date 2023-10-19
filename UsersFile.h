@@ -7,12 +7,13 @@
 #include <cstdlib>
 
 #include "User.h"
-#include "HelperMethods.h"
 #include "Markup.h"
 
 using namespace std;
 
 class UsersFile {
+
+    CMarkup xml;
 
 public:
 

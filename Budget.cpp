@@ -36,6 +36,7 @@ void Budget::loginMenu() {
 void Budget::userMenu() {
 
     cout << "1. TO BE CONTINUED" << endl;
+    cout << "7. Change password." << endl;
     cout << "8. Log out." << endl;
 }
 

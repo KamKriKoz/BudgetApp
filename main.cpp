@@ -46,7 +46,7 @@ int main() {
             budget.userMenu();
             choose = getch();
 
-            switch (choose) {
+            switch(choose) {
 
             case '7':
                 budget.passwordChange();
