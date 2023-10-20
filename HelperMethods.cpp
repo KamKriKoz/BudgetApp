@@ -8,30 +8,29 @@ string HelperMethods::conversionToString(int number) {
     return str;
 }
 
-int HelperMethods::conversionToInt(string number) {
-
-    int numInt;
-    istringstream iss(number);
-    iss >> numInt;
-    return numInt;
-}
-
-string HelperMethods::getNumber(string text, int position) {
-    string number = "";
-    while(isdigit(text[position]) == true)
-    {
-        number += text[position];
-        position ++;
-    }
-    return number;
-}
-
 string HelperMethods::loadLine() {
 
     string input = "";
     cin.sync();
     getline(cin, input);
     return input;
+}
+
+string HelperMethods::covertDateToStringFormat(int date) {
+
+    string dateInFormat = conversionToString(date);
+    dateInFormat.insert(4, "-");
+    dateInFormat.insert(7, "-");
+
+    return dateInFormat;
+}
+
+int HelperMethods::conversionToInt(string number) {
+
+    int numInt;
+    istringstream iss(number);
+    iss >> numInt;
+    return numInt;
 }
 
 int HelperMethods::loadInteger() {
@@ -48,4 +47,16 @@ int HelperMethods::loadInteger() {
         else cout << "This is not an integer. Enter again." << endl;
     }
     return integer;
+}
+
+int HelperMethods::getCurrentDateAsInteger() {
+
+    GetSystemTime(&time);
+    string dateAsString = "";
+
+    dateAsString = conversionToString(time.wYear);
+    (time.wMonth < 10) ? dateAsString.append('0' + conversionToString(time.wMonth)) : dateAsString.append(conversionToString(time.wMonth));
+    (time.wDay < 10) ? dateAsString.append('0' + conversionToString(time.wDay)) : dateAsString.append(conversionToString(time.wDay));
+
+    return conversionToInt(dateAsString);
 }

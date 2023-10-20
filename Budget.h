@@ -4,27 +4,39 @@
 #include <iostream>
 #include <conio.h>
 #include "UserManager.h"
+#include "ServiceManager.h"
 
 using namespace std;
 
 class Budget {
 
     UserManager userManager;
+    ServiceManager *serviceManager;
 
 public:
 
     Budget (string usersFileName)
         : userManager(usersFileName) {
+        serviceManager = NULL;
     };
 
-    void userRegistration();
-    void showUsers();
-    void logging();
-    void passwordChange();
-    void loggingOut();
-    void loginMenu();
-    void userMenu();
-    bool whetherUserIsLogged();
-};
+    ~Budget() {
+        delete serviceManager;
+        serviceManager = NULL;
+    }
+
+        void userRegistration();
+        void showUsers();
+        void logging();
+        void passwordChange();
+        void loggingOut();
+        void loginMenu();
+        void userMenu();
+        void addIncome();
+        void addExpense();
+        void showIncomes();
+        void showExpenses();
+        bool whetherUserIsLogged();
+    };
 
 #endif // BUDGET_H

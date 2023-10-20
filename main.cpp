@@ -28,7 +28,7 @@ int main() {
                 break;
 
             case'3':
-                budget.showUsers();
+                    budget.showUsers();
                 break;
 
             case '9':
@@ -47,6 +47,22 @@ int main() {
             choose = getch();
 
             switch(choose) {
+
+            case '1':
+                budget.addIncome();
+                break;
+
+            case '2':
+                budget.addExpense();
+                break;
+
+            case '3':
+                budget.showIncomes();
+                break;
+
+            case '4':
+                budget.showExpenses();
+                break;
 
             case '6':
                 budget.passwordChange();

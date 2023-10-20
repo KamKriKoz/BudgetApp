@@ -6,20 +6,23 @@
 using namespace std;
 
 class Resources {
+    int userId;
     int resourceId;
-    int amount;
     int date;
+    int amount;
     string item;
 
 public:
-    void setId(int newResourceId);
-    void setAmount(int newAmount);
+    void setUserId(int newUserId);
+    void setResourceId(int newResourceId);
     void setDate(int newDate);
+    void setAmount(int newAmount);
     void setItem(string newItem);
 
-    int getId();
-    int getAmount();
+    int getUserId();
+    int getResourceId();
     int getDate();
+    int getAmount();
     string getItem();
 };
 

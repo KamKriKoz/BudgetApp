@@ -2,12 +2,79 @@
 
 void ServiceManager::showSingleResourceDetails(Resources resource) {
 
-    cout << "Date: \t\t\t" << resource.getDate() << endl;
-    cout << "Amount: \t\t\t" << resource.getAmount() << endl;
-    cout << "Item: \t\t" << resource.getItem() << endl << endl;
+    cout << "Date: \t\t\t" << HelperMethods::covertDateToStringFormat(resource.getDate()) << endl;
+    cout << "Amount: \t\t" << resource.getAmount() << endl;
+    cout << "Item: \t\t\t" << resource.getItem() << endl << endl;
 }
 
 void ServiceManager::addIncome() {
 
+    system("cls");
+    cout << "ADDING NEW INCOME" << endl << endl;
+
+    Resources income = enterNewResourceDetails();
+    incomes.push_back(income);
+
+    cout << "Income has been added." << endl;
+
+    system ("pause");
 }
 
+void ServiceManager::addExpense() {
+
+    system("cls");
+    cout << "ADDING NEW EXPENSE" << endl << endl;
+
+    Resources expense = enterNewResourceDetails();
+    expenses.push_back(expense);
+
+    cout << "Expense has been added." << endl;
+
+    system ("pause");
+}
+
+void ServiceManager::showIncomes() {
+
+    system("cls");
+    if (!incomes.empty()) {
+
+        for (Resources resource : incomes) showSingleResourceDetails(resource);
+
+    } else cout << "There are no incomes yet." << endl;
+    system("pause");
+}
+
+void ServiceManager::showExpenses() {
+
+    system("cls");
+    if (!expenses.empty()) {
+
+        for (Resources resource : expenses) showSingleResourceDetails(resource);
+
+    } else cout << "There are no expenses yet." << endl;
+    system("pause");
+}
+
+Resources ServiceManager::enterNewResourceDetails() {
+
+    system("cls");
+    int amount = 0;
+    int lastResourceId = 0;  //!!! TO REPAIR !!!//
+    string item;
+    Resources resource;
+    HelperMethods date;
+
+    resource.setResourceId(lastResourceId + 1);
+    resource.setUserId(ID_LOGGED_USER);
+    resource.setDate(date.getCurrentDateAsInteger());
+
+    cout << "Enter amount: ";
+    amount = HelperMethods::loadInteger();
+    resource.setAmount(amount);
+
+    cout << "Enter name of the item: ";
+    item = HelperMethods::loadLine();
+    resource.setItem(item);
+
+    return resource;
+}

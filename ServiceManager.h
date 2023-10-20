@@ -8,6 +8,7 @@
 #include <sstream>
 #include <conio.h>
 #include "Resources.h"
+#include "HelperMethods.h"
 //#include "ExpensesFile.h"
 //#include "IncomesFile.h"
 
@@ -20,9 +21,10 @@ class ServiceManager {
  //   ExpensesFile contactsFile;
  //   IncomesFile contactsFile;
 
-  //  vector <Resources> resources;
+    vector <Resources> incomes;
+    vector <Resources> expenses;
 
-    Resources enterNewResourcesDetails();
+    Resources enterNewResourceDetails();
     void showSingleResourceDetails(Resources resource);
 
 public:
