@@ -7,7 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <conio.h>
-//#include "Resources.h"
+#include "Resources.h"
 //#include "ExpensesFile.h"
 //#include "IncomesFile.h"
 
@@ -22,8 +22,8 @@ class ServiceManager {
 
   //  vector <Resources> resources;
 
- //   Resources enterNewResourcesDetails();
-//    void showSingleResourceDetails(Resources resource);
+    Resources enterNewResourcesDetails();
+    void showSingleResourceDetails(Resources resource);
 
 public:
 
