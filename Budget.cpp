@@ -35,9 +35,13 @@ void Budget::loginMenu() {
 
 void Budget::userMenu() {
 
-    cout << "1. TO BE CONTINUED" << endl;
-    cout << "7. Change password." << endl;
-    cout << "8. Log out." << endl;
+    cout << "1. Add income." << endl;
+    cout << "2. Add expense." << endl;
+    cout << "3. Show incomes." << endl;
+    cout << "4. Show expenses." << endl;
+    cout << "5. Show balance." << endl;
+    cout << "6. Change password." << endl;
+    cout << "9. Log out." << endl;
 }
 
 bool Budget::whetherUserIsLogged(){

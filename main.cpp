@@ -48,11 +48,11 @@ int main() {
 
             switch(choose) {
 
-            case '7':
+            case '6':
                 budget.passwordChange();
                 break;
 
-            case '8':
+            case '9':
                 budget.loggingOut();
                 break;
 
