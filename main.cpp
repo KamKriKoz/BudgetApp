@@ -64,6 +64,10 @@ int main() {
                 budget.showExpenses();
                 break;
 
+            case '5':
+                budget.showBalance();
+                break;
+
             case '6':
                 budget.passwordChange();
                 break;

@@ -66,6 +66,16 @@ void Budget::showExpenses(){
     }
 }
 
+void Budget::showBalance(){
+
+    if (userManager.whetherUserIsLogged()) serviceManager -> showBalance();
+    else {
+        cout << "You must be logged in to show incomes." << endl;
+        system("pause");
+    }
+}
+
+
 void Budget::loginMenu() {
 
     cout << "1. Registration." << endl;

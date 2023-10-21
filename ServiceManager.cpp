@@ -55,18 +55,43 @@ void ServiceManager::showExpenses() {
     system("pause");
 }
 
+void ServiceManager::showBalance() {
+
+    system("cls");
+
+    int balance = 0;
+    int incomesSum = 0;
+    int expensesSum = 0;
+
+    for (Resources resource : incomes) {
+
+        incomesSum += resource.getAmount();
+    }
+
+    for (Resources resource : expenses) {
+
+        expensesSum += resource.getAmount();
+    }
+
+    balance = incomesSum - expensesSum;
+    cout << balance << endl;
+
+    system("pause");
+}
+
 Resources ServiceManager::enterNewResourceDetails() {
 
     system("cls");
     int amount = 0;
     int lastResourceId = 0;  //!!! TO REPAIR !!!//
     string item;
+    SYSTEMTIME time;
+    GetSystemTime(&time);
     Resources resource;
-    HelperMethods date;
 
-    resource.setResourceId(lastResourceId + 1);
+    resource.setResourceId(lastResourceId + 1); //!!! TO REPAIR !!!//
     resource.setUserId(ID_LOGGED_USER);
-    resource.setDate(date.getCurrentDateAsInteger());
+    resource.setDate(HelperMethods::getCurrentDateAsInteger(time));
 
     cout << "Enter amount: ";
     amount = HelperMethods::loadInteger();

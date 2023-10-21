@@ -9,7 +9,6 @@
 using namespace std;
 
 class HelperMethods {
-    SYSTEMTIME time;
 
 public:
 
@@ -18,7 +17,7 @@ public:
     static string covertDateToStringFormat(int date);
     static int conversionToInt(string number);
     static int loadInteger();
-    int getCurrentDateAsInteger();
+    static int getCurrentDateAsInteger(SYSTEMTIME time);
 };
 
 #endif // HELPERMETHODS_H

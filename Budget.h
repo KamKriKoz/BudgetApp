@@ -36,6 +36,7 @@ public:
         void addExpense();
         void showIncomes();
         void showExpenses();
+        void showBalance();
         bool whetherUserIsLogged();
     };
 

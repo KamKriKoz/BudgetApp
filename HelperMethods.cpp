@@ -49,9 +49,8 @@ int HelperMethods::loadInteger() {
     return integer;
 }
 
-int HelperMethods::getCurrentDateAsInteger() {
+int HelperMethods::getCurrentDateAsInteger(SYSTEMTIME time) {
 
-    GetSystemTime(&time);
     string dateAsString = "";
 
     dateAsString = conversionToString(time.wYear);
