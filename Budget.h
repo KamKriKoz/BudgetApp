@@ -38,6 +38,8 @@ public:
         void showExpenses();
         void showBalance();
         bool whetherUserIsLogged();
+
+        void loadIncomes();
     };
 
 #endif // BUDGET_H

@@ -16,11 +16,21 @@ string HelperMethods::loadLine() {
     return input;
 }
 
-string HelperMethods::covertDateToStringFormat(int date) {
+string HelperMethods::convertDateToStringFormat(int date) {
 
     string dateInFormat = conversionToString(date);
     dateInFormat.insert(4, "-");
     dateInFormat.insert(7, "-");
+
+    return dateInFormat;
+}
+
+int HelperMethods::convertDateToInteger(string date) {
+
+    int dateInFormat = 0;
+    date.erase(5,1);
+    date.erase(7,1);
+    dateInFormat = conversionToInt(date);
 
     return dateInFormat;
 }

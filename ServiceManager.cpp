@@ -2,7 +2,7 @@
 
 void ServiceManager::showSingleResourceDetails(Resources resource) {
 
-    cout << "Date: \t\t\t" << HelperMethods::covertDateToStringFormat(resource.getDate()) << endl;
+    cout << "Date: \t\t\t" << HelperMethods::convertDateToStringFormat(resource.getDate()) << endl;
     cout << "Amount: \t\t" << resource.getAmount() << endl;
     cout << "Item: \t\t\t" << resource.getItem() << endl << endl;
 }
@@ -14,6 +14,8 @@ void ServiceManager::addIncome() {
 
     Resources income = enterNewResourceDetails();
     incomes.push_back(income);
+
+    incomesFile.addToIncomesFile(income);
 
     cout << "Income has been added." << endl;
 
@@ -74,7 +76,7 @@ void ServiceManager::showBalance() {
     }
 
     balance = incomesSum - expensesSum;
-    cout << balance << endl;
+    cout << "Balance equals: " << balance << endl;
 
     system("pause");
 }

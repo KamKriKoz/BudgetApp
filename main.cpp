@@ -28,10 +28,11 @@ int main() {
                 break;
 
             case'3':
-                    budget.showUsers();
+                budget.showUsers();
                 break;
 
             case '9':
+                cout << "\nSee you next time.\n";
                 exit(0);
 
             default:

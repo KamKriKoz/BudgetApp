@@ -10,7 +10,7 @@
 #include "Resources.h"
 #include "HelperMethods.h"
 //#include "ExpensesFile.h"
-//#include "IncomesFile.h"
+#include "IncomesFile.h"
 
 using namespace std;
 
@@ -18,8 +18,8 @@ class ServiceManager {
 
     const int ID_LOGGED_USER;
 
- //   ExpensesFile contactsFile;
- //   IncomesFile contactsFile;
+ //   ExpensesFile expensesFile;
+    IncomesFile incomesFile;
 
     vector <Resources> incomes;
     vector <Resources> expenses;
@@ -29,7 +29,7 @@ class ServiceManager {
 
 public:
 
-    ServiceManager(int idLoggedUser) : ID_LOGGED_USER(idLoggedUser) {};
+    ServiceManager(string incomesFileName, int idLoggedUser) : ID_LOGGED_USER(idLoggedUser), incomesFile(incomesFileName) {};
     void addIncome();
     void addExpense();
     void showIncomes();

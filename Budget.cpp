@@ -14,7 +14,7 @@ void Budget::logging() {
 
     userManager.logging();
     if (userManager.whetherUserIsLogged()) {
-        serviceManager = new ServiceManager(userManager.getIdLoggedUser());
+        serviceManager = new ServiceManager("Incomes.xml", userManager.getIdLoggedUser());
     }
 }
 
