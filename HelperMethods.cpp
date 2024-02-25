@@ -59,6 +59,22 @@ int HelperMethods::loadInteger() {
     return integer;
 }
 
+double HelperMethods::loadDouble() {
+
+    string input = "";
+    double doub = 0.00;
+
+    while(1) {
+
+        getline(cin, input);
+        stringstream myStream(input);
+
+        if (myStream >> doub) break;
+        else cout << "This is not correct form. Enter again." << endl;
+    }
+    return doub;
+}
+
 int HelperMethods::getCurrentDateAsInteger(SYSTEMTIME time) {
 
     string dateAsString = "";

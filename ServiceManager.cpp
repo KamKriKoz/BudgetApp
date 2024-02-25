@@ -2,9 +2,9 @@
 
 void ServiceManager::showSingleResourceDetails(Resources resource) {
 
-    cout << "Date: \t\t\t" << HelperMethods::convertDateToStringFormat(resource.getDate()) << endl;
-    cout << "Amount: \t\t" << resource.getAmount() << endl;
-    cout << "Item: \t\t\t" << resource.getItem() << endl << endl;
+    cout << "Date: \t\t\t" << HelperMethods::convertDateToStringFormat(resource.date) << endl;
+    cout << "Amount: \t\t" << resource.amount << endl;
+    cout << "Item: \t\t\t" << resource.item << endl << endl;
 }
 
 void ServiceManager::addIncome() {
@@ -61,18 +61,18 @@ void ServiceManager::showBalance() {
 
     system("cls");
 
-    int balance = 0;
-    int incomesSum = 0;
-    int expensesSum = 0;
+    double balance = 0;
+    double incomesSum = 0.0;
+    double expensesSum = 0;
 
     for (Resources resource : incomes) {
 
-        incomesSum += resource.getAmount();
+        incomesSum += resource.amount;
     }
 
     for (Resources resource : expenses) {
 
-        expensesSum += resource.getAmount();
+        expensesSum += resource.amount;
     }
 
     balance = incomesSum - expensesSum;
@@ -84,24 +84,24 @@ void ServiceManager::showBalance() {
 Resources ServiceManager::enterNewResourceDetails() {
 
     system("cls");
-    int amount = 0;
+    double amount = 0.0;
     int lastResourceId = 0;  //!!! TO REPAIR !!!//
-    string item;
+    string item = "";
     SYSTEMTIME time;
     GetSystemTime(&time);
     Resources resource;
 
-    resource.setResourceId(lastResourceId + 1); //!!! TO REPAIR !!!//
-    resource.setUserId(ID_LOGGED_USER);
-    resource.setDate(HelperMethods::getCurrentDateAsInteger(time));
+    resource.resourceId = lastResourceId + 1; //!!! TO REPAIR !!!//
+    resource.userId = ID_LOGGED_USER;
+    resource.date = HelperMethods::getCurrentDateAsInteger(time);
 
     cout << "Enter amount: ";
-    amount = HelperMethods::loadInteger();
-    resource.setAmount(amount);
+    amount = HelperMethods::loadDouble();
+    resource.amount = amount;
 
     cout << "Enter name of the item: ";
     item = HelperMethods::loadLine();
-    resource.setItem(item);
+    resource.item = item;
 
     return resource;
 }

@@ -12,11 +12,11 @@ void IncomesFile::addToIncomesFile(Resources income) {
     xml.IntoElem();
     xml.AddElem("Income");
     xml.IntoElem();
-    xml.AddElem("IncomeId",income.getResourceId());
-    xml.AddElem("UserId", income.getUserId());
-    xml.AddElem("Date", HelperMethods::convertDateToStringFormat(income.getDate()));
-    xml.AddElem("Amount", income.getAmount());
-    xml.AddElem("Item", income.getItem());
+    xml.AddElem("IncomeId",income.resourceId);
+    xml.AddElem("UserId", income.userId);
+    xml.AddElem("Date", HelperMethods::convertDateToStringFormat(income.date));
+    xml.AddElem("Amount", income.amount);
+    xml.AddElem("Item", income.item);
 
     xml.Save("Incomes.xml");
 }
@@ -40,19 +40,19 @@ vector <Resources> IncomesFile::loadIncomesFromFile() {
             xml.IntoElem();
 
             xml.FindElem();
-            income.setResourceId(atoi(xml.GetData().c_str()));
+            income.resourceId = atoi(xml.GetData().c_str());
 
             xml.FindElem();
-            income.setUserId(atoi(xml.GetData().c_str()));
+            income.userId = atoi(xml.GetData().c_str());
 
             xml.FindElem();
-            income.setDate(HelperMethods::convertDateToInteger(xml.GetData()));
+            income.date = HelperMethods::convertDateToInteger(xml.GetData());
 
             xml.FindElem();
-            income.setAmount(atoi(xml.GetData().c_str()));
+            income.amount = atoi(xml.GetData().c_str());
 
             xml.FindElem();
-            income.setItem(xml.GetData());
+            income.item = xml.GetData();
 
             incomes.push_back(income);
 

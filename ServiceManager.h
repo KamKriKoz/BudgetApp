@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef SERVICEMANAGER_H
 #define SERVICEMANAGER_H
 

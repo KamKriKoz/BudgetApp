@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef INCOMESFILE_H
 #define INCOMESFILE_H
 
