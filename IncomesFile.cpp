@@ -14,7 +14,7 @@ void IncomesFile::addToIncomesFile(Resources income) {
     xml.IntoElem();
     xml.AddElem("IncomeId",income.resourceId);
     xml.AddElem("UserId", income.userId);
-    xml.AddElem("Date", DateMethods::convertDateToStringFormat(income.date));
+    xml.AddElem("Date", income.date);
     xml.AddElem("Amount", income.amount);
     xml.AddElem("Item", income.item);
 
@@ -46,7 +46,7 @@ vector <Resources> IncomesFile::loadIncomesFromFile() {
             income.userId = atoi(xml.GetData().c_str());
 
             xml.FindElem();
-            income.date = DateMethods::convertDateToInteger(xml.GetData());
+            income.date = atoi(xml.GetData().c_str());
 
             xml.FindElem();
             income.amount = atoi(xml.GetData().c_str());

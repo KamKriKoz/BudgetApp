@@ -61,9 +61,9 @@ void ServiceManager::showBalance() {
 
     system("cls");
 
-    double balance = 0;
-    double incomesSum = 0.0;
-    double expensesSum = 0;
+    double balance = 0.00;
+    double incomesSum = 0.00;
+    double expensesSum = 0.00;
 
     for (Resources resource : incomes) {
 
@@ -84,7 +84,7 @@ void ServiceManager::showBalance() {
 Resources ServiceManager::enterNewResourceDetails() {
 
     system("cls");
-    double amount = 0.0;
+    double amount = 0.00;
     int lastResourceId = 0;  //!!! TO REPAIR !!!//
     string item = "";
     SYSTEMTIME time;

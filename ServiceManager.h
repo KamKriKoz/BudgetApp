@@ -21,7 +21,7 @@ class ServiceManager {
 
     const int ID_LOGGED_USER;
 
- //   ExpensesFile expensesFile;
+//   ExpensesFile expensesFile;
     IncomesFile incomesFile;
 
     vector <Resources> incomes;
@@ -32,7 +32,9 @@ class ServiceManager {
 
 public:
 
-    ServiceManager(string incomesFileName, int idLoggedUser) : ID_LOGGED_USER(idLoggedUser), incomesFile(incomesFileName) {};
+    ServiceManager(string incomesFileName, int idLoggedUser) : ID_LOGGED_USER(idLoggedUser), incomesFile(incomesFileName) {
+        incomes = incomesFile.loadIncomesFromFile();
+    };
     void addIncome();
     void addExpense();
     void showIncomes();
