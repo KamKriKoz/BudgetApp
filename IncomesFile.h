@@ -11,6 +11,7 @@
 #include "Resources.h"
 #include "HelperMethods.h"
 #include "Markup.h"
+#include "DateMethods.h"
 
 using namespace std;
 

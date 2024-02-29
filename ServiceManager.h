@@ -11,6 +11,7 @@
 #include <conio.h>
 #include "Resources.h"
 #include "HelperMethods.h"
+#include "DateMethods.h"
 //#include "ExpensesFile.h"
 #include "IncomesFile.h"
 

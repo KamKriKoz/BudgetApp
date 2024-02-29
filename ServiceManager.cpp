@@ -2,7 +2,7 @@
 
 void ServiceManager::showSingleResourceDetails(Resources resource) {
 
-    cout << "Date: \t\t\t" << HelperMethods::convertDateToStringFormat(resource.date) << endl;
+    cout << "Date: \t\t\t" << DateMethods::convertDateToStringFormat(resource.date) << endl;
     cout << "Amount: \t\t" << resource.amount << endl;
     cout << "Item: \t\t\t" << resource.item << endl << endl;
 }
@@ -93,7 +93,7 @@ Resources ServiceManager::enterNewResourceDetails() {
 
     resource.resourceId = lastResourceId + 1; //!!! TO REPAIR !!!//
     resource.userId = ID_LOGGED_USER;
-    resource.date = HelperMethods::getCurrentDateAsInteger(time);
+    resource.date = DateMethods::getCurrentDateAsInteger(time);
 
     cout << "Enter amount: ";
     amount = HelperMethods::loadDouble();
