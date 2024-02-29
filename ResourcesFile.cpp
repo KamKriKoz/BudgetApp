@@ -12,11 +12,11 @@ void ResourcesFile::addToResourcesFile(Resources resource) {
     xml.IntoElem();
     xml.AddElem("Income");
     xml.IntoElem();
-    xml.AddElem("IncomeId",income.resourceId);
-    xml.AddElem("UserId", income.userId);
-    xml.AddElem("Date", income.date);
-    xml.AddElem("Item", income.item);
-    xml.AddElem("Amount", income.amount);
+    xml.AddElem("IncomeId",resource.resourceId);
+    xml.AddElem("UserId", resource.userId);
+    xml.AddElem("Date", resource.date);
+    xml.AddElem("Item", resource.item);
+    xml.AddElem("Amount", resource.amount);
 
     xml.Save("Incomes.xml");
 }

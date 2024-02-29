@@ -15,7 +15,7 @@ void ServiceManager::addIncome() {
     Resources income = enterNewResourceDetails();
     incomes.push_back(income);
 
-    incomesFile.addToIncomesFile(income);
+    resourcesFile.addToResourcesFile(income);
 
     cout << "Income has been added." << endl;
 
