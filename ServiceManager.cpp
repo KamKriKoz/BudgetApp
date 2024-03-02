@@ -2,9 +2,9 @@
 
 void ServiceManager::showSingleResourceDetails(Resources resource) {
 
-    cout << "Date: \t\t\t" << HelperMethods::convertDateToStringFormat(resource.getDate()) << endl;
-    cout << "Amount: \t\t" << resource.getAmount() << endl;
-    cout << "Item: \t\t\t" << resource.getItem() << endl << endl;
+    cout << "Date: \t\t\t" << DateMethods::convertDateToStringFormat(resource.date) << endl;
+    cout << "Amount: \t\t" << resource.amount << endl;
+    cout << "Item: \t\t\t" << resource.item << endl << endl;
 }
 
 void ServiceManager::addIncome() {
@@ -12,10 +12,10 @@ void ServiceManager::addIncome() {
     system("cls");
     cout << "ADDING NEW INCOME" << endl << endl;
 
-    Resources income = enterNewResourceDetails();
+    Resources income = enterNewResourceDetails(INCOME);
     incomes.push_back(income);
 
-    incomesFile.addToIncomesFile(income);
+    resourcesFile.addToResourcesFile(income, INCOME);
 
     cout << "Income has been added." << endl;
 
@@ -27,7 +27,7 @@ void ServiceManager::addExpense() {
     system("cls");
     cout << "ADDING NEW EXPENSE" << endl << endl;
 
-    Resources expense = enterNewResourceDetails();
+    Resources expense = enterNewResourceDetails(EXPENSE);
     expenses.push_back(expense);
 
     cout << "Expense has been added." << endl;
@@ -61,18 +61,18 @@ void ServiceManager::showBalance() {
 
     system("cls");
 
-    int balance = 0;
-    int incomesSum = 0;
-    int expensesSum = 0;
+    double balance = 0.00;
+    double incomesSum = 0.00;
+    double expensesSum = 0.00;
 
     for (Resources resource : incomes) {
 
-        incomesSum += resource.getAmount();
+        incomesSum += resource.amount;
     }
 
     for (Resources resource : expenses) {
 
-        expensesSum += resource.getAmount();
+        expensesSum += resource.amount;
     }
 
     balance = incomesSum - expensesSum;
@@ -81,27 +81,36 @@ void ServiceManager::showBalance() {
     system("pause");
 }
 
-Resources ServiceManager::enterNewResourceDetails() {
+Resources ServiceManager::enterNewResourceDetails(const Type &type) {
 
     system("cls");
-    int amount = 0;
-    int lastResourceId = 0;  //!!! TO REPAIR !!!//
-    string item;
+    double amount = 0.00;
+    //int lastResourceId = 0;  //!!! TO REPAIR !!!//
+    string item = "";
     SYSTEMTIME time;
     GetSystemTime(&time);
     Resources resource;
 
-    resource.setResourceId(lastResourceId + 1); //!!! TO REPAIR !!!//
-    resource.setUserId(ID_LOGGED_USER);
-    resource.setDate(HelperMethods::getCurrentDateAsInteger(time));
+    switch (type) {
+    case INCOME:
+        resource.resourceId = resourcesFile.getNewResourceId(INCOME);
 
-    cout << "Enter amount: ";
-    amount = HelperMethods::loadInteger();
-    resource.setAmount(amount);
+        break;
+    case EXPENSE:
+
+        break;
+    }
+
+    resource.userId = ID_LOGGED_USER;
+    resource.date = DateMethods::getCurrentDateAsInteger(time);
 
     cout << "Enter name of the item: ";
     item = HelperMethods::loadLine();
-    resource.setItem(item);
+    resource.item = item;
+
+    cout << "Enter amount: ";
+    amount = HelperMethods::loadDouble();
+    resource.amount = amount;
 
     return resource;
 }

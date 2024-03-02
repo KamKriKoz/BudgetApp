@@ -137,6 +137,5 @@ bool UserManager::whetherThereIsLogin(string login) {
             return true;
         }
     }
-
     return false;
 }
