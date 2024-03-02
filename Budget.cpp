@@ -75,7 +75,6 @@ void Budget::showBalance(){
     }
 }
 
-
 void Budget::loginMenu() {
 
     cout << "1. Registration." << endl;

@@ -1,6 +1,6 @@
 #include "ResourcesFile.h"
 
-void ResourcesFile::addToResourcesFile(Resources resource) {
+void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
 
     if (!xml.Load("Incomes.xml")) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
@@ -61,4 +61,41 @@ vector <Resources> ResourcesFile::loadResourcesFromFile() {
         } while (xml.FindElem());
     }
     return incomes;
+}
+
+int ResourcesFile::getNewResourceId(const Type &type) {
+
+    int lastResourceId = 1;
+    string incomesFileName = "";
+
+    switch (type) {
+    case INCOME:
+        incomesFileName = "Incomes.xml";
+    case EXPENSE:
+
+        break;
+    }
+
+    if (!xml.Load(incomesFileName)) {
+        return lastResourceId;
+    } else {
+        xml.ResetPos();
+        xml.IntoElem();
+        xml.FindElem();
+        xml.IntoElem();
+        xml.FindElem();
+
+        do {
+            xml.IntoElem();
+            xml.FindElem();
+            lastResourceId = atoi(xml.GetData().c_str());
+            xml.FindElem();
+            xml.FindElem();
+            xml.FindElem();
+            xml.FindElem();
+            xml.OutOfElem();
+        } while (xml.FindElem());
+
+        return lastResourceId + 1;
+    }
 }

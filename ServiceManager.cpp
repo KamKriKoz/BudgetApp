@@ -12,10 +12,10 @@ void ServiceManager::addIncome() {
     system("cls");
     cout << "ADDING NEW INCOME" << endl << endl;
 
-    Resources income = enterNewResourceDetails();
+    Resources income = enterNewResourceDetails(INCOME);
     incomes.push_back(income);
 
-    resourcesFile.addToResourcesFile(income);
+    resourcesFile.addToResourcesFile(income, INCOME);
 
     cout << "Income has been added." << endl;
 
@@ -27,7 +27,7 @@ void ServiceManager::addExpense() {
     system("cls");
     cout << "ADDING NEW EXPENSE" << endl << endl;
 
-    Resources expense = enterNewResourceDetails();
+    Resources expense = enterNewResourceDetails(EXPENSE);
     expenses.push_back(expense);
 
     cout << "Expense has been added." << endl;
@@ -81,27 +81,36 @@ void ServiceManager::showBalance() {
     system("pause");
 }
 
-Resources ServiceManager::enterNewResourceDetails() {
+Resources ServiceManager::enterNewResourceDetails(const Type &type) {
 
     system("cls");
     double amount = 0.00;
-    int lastResourceId = 0;  //!!! TO REPAIR !!!//
+    //int lastResourceId = 0;  //!!! TO REPAIR !!!//
     string item = "";
     SYSTEMTIME time;
     GetSystemTime(&time);
     Resources resource;
 
-    resource.resourceId = lastResourceId + 1; //!!! TO REPAIR !!!//
+    switch (type) {
+    case INCOME:
+        resource.resourceId = resourcesFile.getNewResourceId(INCOME);
+
+        break;
+    case EXPENSE:
+
+        break;
+    }
+
     resource.userId = ID_LOGGED_USER;
     resource.date = DateMethods::getCurrentDateAsInteger(time);
-
-    cout << "Enter amount: ";
-    amount = HelperMethods::loadDouble();
-    resource.amount = amount;
 
     cout << "Enter name of the item: ";
     item = HelperMethods::loadLine();
     resource.item = item;
+
+    cout << "Enter amount: ";
+    amount = HelperMethods::loadDouble();
+    resource.amount = amount;
 
     return resource;
 }

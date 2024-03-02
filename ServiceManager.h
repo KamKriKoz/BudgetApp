@@ -10,6 +10,7 @@
 #include <sstream>
 #include <conio.h>
 #include "Resources.h"
+#include "Type.h"
 #include "HelperMethods.h"
 #include "DateMethods.h"
 //#include "ExpensesFile.h"
@@ -27,7 +28,7 @@ class ServiceManager {
     vector <Resources> incomes;
     vector <Resources> expenses;
 
-    Resources enterNewResourceDetails();
+    Resources enterNewResourceDetails(const Type &type);
     void showSingleResourceDetails(Resources resource);
 
 public:
