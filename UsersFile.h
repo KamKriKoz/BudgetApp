@@ -18,9 +18,9 @@ class UsersFile {
 public:
 
     UsersFile(string fileName) {};
-    void addToUsersFile(User person);
-    vector <User> loadUsersFromFile();
-    void overwriteUsersFile(vector <User> &users);
+    void addToUsersFile(User person, string fileName);
+    vector <User> loadUsersFromFile(string fileName);
+    void overwriteUsersFile(vector <User> &users, string fileName);
 };
 
 #endif // USERFILE_H

@@ -7,15 +7,15 @@ void ServiceManager::showSingleResourceDetails(Resources resource) {
     cout << "Item: \t\t\t" << resource.item << endl << endl;
 }
 
-void ServiceManager::addIncome() {
+void ServiceManager::addIncome(string incomesFileName) {
 
     system("cls");
     cout << "ADDING NEW INCOME" << endl << endl;
 
-    Resources income = enterNewResourceDetails(INCOME);
+    Resources income = enterNewResourceDetails(INCOME, incomesFileName);
     incomes.push_back(income);
 
-    resourcesFile.addToResourcesFile(income, INCOME);
+    resourcesFile.addToResourcesFile(income, INCOME, incomesFileName);
 
     cout << "Income has been added." << endl;
 
@@ -27,8 +27,8 @@ void ServiceManager::addExpense() {
     system("cls");
     cout << "ADDING NEW EXPENSE" << endl << endl;
 
-    Resources expense = enterNewResourceDetails(EXPENSE);
-    expenses.push_back(expense);
+  //  Resources expense = enterNewResourceDetails(EXPENSE);
+//    expenses.push_back(expense);
 
     cout << "Expense has been added." << endl;
 
@@ -81,7 +81,7 @@ void ServiceManager::showBalance() {
     system("pause");
 }
 
-Resources ServiceManager::enterNewResourceDetails(const Type &type) {
+Resources ServiceManager::enterNewResourceDetails(const Type &type, string incomesFileName) {
 
     system("cls");
     double amount = 0.00;
@@ -92,7 +92,7 @@ Resources ServiceManager::enterNewResourceDetails(const Type &type) {
 
     switch (type) {
     case INCOME:
-        resource.resourceId = resourcesFile.getNewResourceId(INCOME);
+        resource.resourceId = resourcesFile.getNewResourceId(INCOME, incomesFileName);
 
         break;
     case EXPENSE:

@@ -22,10 +22,10 @@ class ResourcesFile {
 
 public:
 
-    ResourcesFile(string resourcesFileName) {};
-    void addToResourcesFile(Resources resource, const Type &type);
-    vector <Resources> loadResourcesFromFile(int ID_LOGGED_USER);
-    int getNewResourceId(const Type &type);
+    ResourcesFile(string incomesFileName) {};
+    void addToResourcesFile(Resources resource, const Type &type, string incomesFileName);
+    vector <Resources> loadResourcesFromFile(int ID_LOGGED_USER, string incomesFileName);
+    int getNewResourceId(const Type &type, string incomesFileName);
 };
 
 #endif // RESOURCESFILE_H

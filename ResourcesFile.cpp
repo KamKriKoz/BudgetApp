@@ -1,8 +1,20 @@
 #include "ResourcesFile.h"
 
-void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
+void ResourcesFile::addToResourcesFile(Resources resource, const Type &type, string incomesFileName) {
 
-    if (!xml.Load("Incomes.xml")) {
+    string fileName = "";
+    string resourceType = "";
+
+    switch (type) {
+    case INCOME:
+        fileName = incomesFileName;
+        resourceType = "Income";
+    case EXPENSE:
+
+        break;
+    }
+
+    if (!xml.Load(fileName)) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Incomes");
     }
@@ -10,23 +22,23 @@ void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
     xml.ResetPos();
     xml.FindElem();
     xml.IntoElem();
-    xml.AddElem("Income");
+    xml.AddElem(resourceType);
     xml.IntoElem();
-    xml.AddElem("IncomeId",resource.resourceId);
+    xml.AddElem("Id",resource.resourceId);
     xml.AddElem("UserId", resource.userId);
     xml.AddElem("Date", resource.date);
     xml.AddElem("Item", resource.item);
     xml.AddElem("Amount", resource.amount);
 
-    xml.Save("Incomes.xml");
+    xml.Save(fileName);
 }
 
-vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER) {
+vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER, string incomesFileName) {
 
     Resources income;
     vector <Resources> incomes;
 
-    if (!xml.Load("Incomes.xml")) {
+    if (!xml.Load(incomesFileName)) {
         cout << "There are no incomes yet." << endl;
         system("pause");
     } else {
@@ -63,20 +75,20 @@ vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER) {
     return incomes;
 }
 
-int ResourcesFile::getNewResourceId(const Type &type) {
+int ResourcesFile::getNewResourceId(const Type &type, string incomesFileName) {
 
     int lastResourceId = 1;
-    string incomesFileName = "";
+    string fileName = "";
 
     switch (type) {
     case INCOME:
-        incomesFileName = "Incomes.xml";
+        fileName = incomesFileName;
     case EXPENSE:
 
         break;
     }
 
-    if (!xml.Load(incomesFileName)) {
+    if (!xml.Load(fileName)) {
         return lastResourceId;
     } else {
         xml.ResetPos();

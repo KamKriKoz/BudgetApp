@@ -5,12 +5,12 @@ int UserManager::getIdLoggedUser() {
     return idLoggedUser;
 }
 
-void UserManager::userRegistration() {
+void UserManager::userRegistration(string fileName) {
 
     system ("cls");
     User person = enterNewUserDetails();
     users.push_back(person);
-    usersFile.addToUsersFile(person);
+    usersFile.addToUsersFile(person, fileName);
 
     cout << "Account created." << endl;
     system ("pause");
@@ -60,7 +60,7 @@ void UserManager::logging() {
     system("pause");
 }
 
-void UserManager::passwordChange() {
+void UserManager::passwordChange(string fileName) {
 
     string newPassword = "";
     system("cls");
@@ -75,7 +75,7 @@ void UserManager::passwordChange() {
             system("pause");
         }
     }
-   usersFile.overwriteUsersFile(users);
+   usersFile.overwriteUsersFile(users, fileName);
 }
 
 void UserManager::loggingOut() {
