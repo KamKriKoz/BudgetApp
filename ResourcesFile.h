@@ -24,7 +24,7 @@ public:
 
     ResourcesFile(string resourcesFileName) {};
     void addToResourcesFile(Resources resource, const Type &type);
-    vector <Resources> loadResourcesFromFile();
+    vector <Resources> loadResourcesFromFile(int ID_LOGGED_USER);
     int getNewResourceId(const Type &type);
 };
 

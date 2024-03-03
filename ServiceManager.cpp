@@ -85,7 +85,6 @@ Resources ServiceManager::enterNewResourceDetails(const Type &type) {
 
     system("cls");
     double amount = 0.00;
-    //int lastResourceId = 0;  //!!! TO REPAIR !!!//
     string item = "";
     SYSTEMTIME time;
     GetSystemTime(&time);

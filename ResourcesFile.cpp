@@ -21,7 +21,7 @@ void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
     xml.Save("Incomes.xml");
 }
 
-vector <Resources> ResourcesFile::loadResourcesFromFile() {
+vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER) {
 
     Resources income;
     vector <Resources> incomes;
@@ -54,7 +54,7 @@ vector <Resources> ResourcesFile::loadResourcesFromFile() {
             xml.FindElem();
             income.amount = atoi(xml.GetData().c_str());
 
-            incomes.push_back(income);
+            if (income.userId == ID_LOGGED_USER) incomes.push_back(income);
 
             xml.OutOfElem();
 

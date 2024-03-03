@@ -13,7 +13,6 @@
 #include "Type.h"
 #include "HelperMethods.h"
 #include "DateMethods.h"
-//#include "ExpensesFile.h"
 #include "ResourcesFile.h"
 
 using namespace std;
@@ -22,7 +21,6 @@ class ServiceManager {
 
     const int ID_LOGGED_USER;
 
-//   ExpensesFile expensesFile;
     ResourcesFile resourcesFile;
 
     vector <Resources> incomes;
@@ -34,7 +32,7 @@ class ServiceManager {
 public:
 
     ServiceManager(string incomesFileName, int idLoggedUser) : ID_LOGGED_USER(idLoggedUser), resourcesFile(incomesFileName) {
-        incomes = resourcesFile.loadResourcesFromFile();
+        incomes = resourcesFile.loadResourcesFromFile(ID_LOGGED_USER);
     };
     void addIncome();
     void addExpense();
