@@ -2,20 +2,23 @@
 
 void ServiceManager::showSingleResourceDetails(Resources resource) {
 
+    std::cout.precision(2);
+    std::cout << std::fixed;
+
     cout << "Date: \t\t\t" << DateMethods::convertDateToStringFormat(resource.date) << endl;
     cout << "Amount: \t\t" << resource.amount << endl;
     cout << "Item: \t\t\t" << resource.item << endl << endl;
 }
 
-void ServiceManager::addIncome(string incomesFileName) {
+void ServiceManager::addIncome() {
 
     system("cls");
     cout << "ADDING NEW INCOME" << endl << endl;
 
-    Resources income = enterNewResourceDetails(INCOME, incomesFileName);
+    Resources income = enterNewResourceDetails(INCOME);
     incomes.push_back(income);
 
-    resourcesFile.addToResourcesFile(income, INCOME, incomesFileName);
+    resourcesFile.addToResourcesFile(income, INCOME);
 
     cout << "Income has been added." << endl;
 
@@ -76,23 +79,24 @@ void ServiceManager::showBalance() {
     }
 
     balance = incomesSum - expensesSum;
+    std::cout.precision(2);
+    std::cout << std::fixed;
     cout << "Balance equals: " << balance << endl;
 
     system("pause");
 }
 
-Resources ServiceManager::enterNewResourceDetails(const Type &type, string incomesFileName) {
+Resources ServiceManager::enterNewResourceDetails(const Type &type) {
 
     system("cls");
-    double amount = 0.00;
-    string item = "";
+    string item, amount = "";
     SYSTEMTIME time;
     GetSystemTime(&time);
     Resources resource;
 
     switch (type) {
     case INCOME:
-        resource.resourceId = resourcesFile.getNewResourceId(INCOME, incomesFileName);
+        resource.resourceId = resourcesFile.getNewResourceId(INCOME);
 
         break;
     case EXPENSE:
@@ -108,8 +112,8 @@ Resources ServiceManager::enterNewResourceDetails(const Type &type, string incom
     resource.item = item;
 
     cout << "Enter amount: ";
-    amount = HelperMethods::loadDouble();
-    resource.amount = amount;
+    amount = HelperMethods::loadLine();
+    resource.amount = std::stod(amount);
 
     return resource;
 }

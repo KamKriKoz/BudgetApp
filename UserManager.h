@@ -28,12 +28,12 @@ public:
 
     UserManager(string usersFileName) : usersFile(usersFileName) {
         idLoggedUser = 0;
-        users = usersFile.loadUsersFromFile(usersFileName);
+        users = usersFile.loadUsersFromFile();
     };
     void logging();
-    void userRegistration(string fileName);
+    void userRegistration();
     void showUsers();
-    void passwordChange(string fileName);
+    void passwordChange();
     void loggingOut();
     bool whetherUserIsLogged();
     int getIdLoggedUser();

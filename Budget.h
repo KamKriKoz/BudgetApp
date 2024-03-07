@@ -12,11 +12,12 @@ class Budget {
 
     UserManager userManager;
     ServiceManager *serviceManager;
+    const string INCOMES_FILE_NAME;
 
 public:
 
-    Budget (string usersFileName)
-        : userManager(usersFileName) {
+    Budget (string usersFileName, string incomesFileName)
+        : userManager(usersFileName), INCOMES_FILE_NAME(incomesFileName) {
         serviceManager = NULL;
     };
 

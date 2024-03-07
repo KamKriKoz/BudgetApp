@@ -26,15 +26,15 @@ class ServiceManager {
     vector <Resources> incomes;
     vector <Resources> expenses;
 
-    Resources enterNewResourceDetails(const Type &type, string incomesFileName);
+    Resources enterNewResourceDetails(const Type &type);
     void showSingleResourceDetails(Resources resource);
 
 public:
 
     ServiceManager(int idLoggedUser, string incomesFileName) : ID_LOGGED_USER(idLoggedUser), resourcesFile(incomesFileName) {
-        incomes = resourcesFile.loadResourcesFromFile(ID_LOGGED_USER, incomesFileName);
+        incomes = resourcesFile.loadResourcesFromFile(ID_LOGGED_USER);
     };
-    void addIncome(string incomesFileName);
+    void addIncome();
     void addExpense();
     void showIncomes();
     void showExpenses();

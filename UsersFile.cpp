@@ -1,8 +1,13 @@
 #include "UsersFile.h"
 
-void UsersFile::addToUsersFile(User person, string fileName) {
+string UsersFile::getFileName() {
 
-    if (!xml.Load(fileName)) {
+    return FILE_NAME;
+}
+
+void UsersFile::addToUsersFile(User person) {
+
+    if (!xml.Load(getFileName())) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Users");
     }
@@ -18,15 +23,15 @@ void UsersFile::addToUsersFile(User person, string fileName) {
     xml.AddElem("Name", person.getName());
     xml.AddElem("Surname", person.getSurname());
 
-    xml.Save(fileName);
+    xml.Save(getFileName());
 }
 
-vector <User> UsersFile::loadUsersFromFile(string fileName) {
+vector <User> UsersFile::loadUsersFromFile() {
 
     User person;
     vector <User> users;
 
-    if (!xml.Load(fileName)) {
+    if (!xml.Load(getFileName())) {
         cout << "There are no users yet." << endl;
         system("pause");
     } else {
@@ -63,7 +68,7 @@ vector <User> UsersFile::loadUsersFromFile(string fileName) {
     return users;
 }
 
-void UsersFile::overwriteUsersFile(vector <User> &users, string fileName) {
+void UsersFile::overwriteUsersFile(vector <User> &users) {
 
     xml.ResetPos();
     xml.IntoElem();
@@ -84,6 +89,6 @@ void UsersFile::overwriteUsersFile(vector <User> &users, string fileName) {
         xml.AddElem("Name", users[i].getName());
         xml.AddElem("Surname", users[i].getSurname());
 
-        xml.Save(fileName);
+        xml.Save(getFileName());
     }
 }

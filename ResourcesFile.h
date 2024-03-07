@@ -18,14 +18,16 @@ using namespace std;
 
 class ResourcesFile {
 
+    const string INCOMES_FILE_NAME;
     CMarkup xml;
 
 public:
 
-    ResourcesFile(string incomesFileName) {};
-    void addToResourcesFile(Resources resource, const Type &type, string incomesFileName);
-    vector <Resources> loadResourcesFromFile(int ID_LOGGED_USER, string incomesFileName);
-    int getNewResourceId(const Type &type, string incomesFileName);
+    ResourcesFile(string incomesFileName) : INCOMES_FILE_NAME(incomesFileName) {};
+    string getIncomesFileName();
+    void addToResourcesFile(Resources resource, const Type &type);
+    vector <Resources> loadResourcesFromFile(int ID_LOGGED_USER);
+    int getNewResourceId(const Type &type);
 };
 
 #endif // RESOURCESFILE_H

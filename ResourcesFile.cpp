@@ -1,13 +1,18 @@
 #include "ResourcesFile.h"
 
-void ResourcesFile::addToResourcesFile(Resources resource, const Type &type, string incomesFileName) {
+string ResourcesFile::getIncomesFileName() {
+
+    return INCOMES_FILE_NAME;
+}
+
+void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
 
     string fileName = "";
     string resourceType = "";
 
     switch (type) {
     case INCOME:
-        fileName = incomesFileName;
+        fileName = getIncomesFileName();
         resourceType = "Income";
     case EXPENSE:
 
@@ -28,17 +33,17 @@ void ResourcesFile::addToResourcesFile(Resources resource, const Type &type, str
     xml.AddElem("UserId", resource.userId);
     xml.AddElem("Date", resource.date);
     xml.AddElem("Item", resource.item);
-    xml.AddElem("Amount", resource.amount);
+    xml.AddElem("Amount", HelperMethods::conversionDoubleToString(resource.amount));
 
     xml.Save(fileName);
 }
 
-vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER, string incomesFileName) {
+vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER) {
 
     Resources income;
     vector <Resources> incomes;
 
-    if (!xml.Load(incomesFileName)) {
+    if (!xml.Load(getIncomesFileName())) {
         cout << "There are no incomes yet." << endl;
         system("pause");
     } else {
@@ -64,7 +69,7 @@ vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER, stri
             income.item = xml.GetData();
 
             xml.FindElem();
-            income.amount = atoi(xml.GetData().c_str());
+            income.amount = std::stod((xml.GetData().c_str()));
 
             if (income.userId == ID_LOGGED_USER) incomes.push_back(income);
 
@@ -75,14 +80,14 @@ vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER, stri
     return incomes;
 }
 
-int ResourcesFile::getNewResourceId(const Type &type, string incomesFileName) {
+int ResourcesFile::getNewResourceId(const Type &type) {
 
     int lastResourceId = 1;
     string fileName = "";
 
     switch (type) {
     case INCOME:
-        fileName = incomesFileName;
+        fileName = getIncomesFileName();
     case EXPENSE:
 
         break;

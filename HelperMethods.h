@@ -13,6 +13,7 @@ class HelperMethods {
 public:
 
     static string conversionToString(int number);
+    static string conversionDoubleToString(double number);
     static string loadLine();
     static int conversionToInt(string number);
     static int loadInteger();

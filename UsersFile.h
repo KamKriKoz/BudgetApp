@@ -13,14 +13,16 @@ using namespace std;
 
 class UsersFile {
 
+    const string FILE_NAME;
     CMarkup xml;
 
 public:
 
-    UsersFile(string fileName) {};
-    void addToUsersFile(User person, string fileName);
-    vector <User> loadUsersFromFile(string fileName);
-    void overwriteUsersFile(vector <User> &users, string fileName);
+    UsersFile(string fileName) : FILE_NAME(fileName) {};
+    string getFileName();
+    void addToUsersFile(User person);
+    vector <User> loadUsersFromFile();
+    void overwriteUsersFile(vector <User> &users);
 };
 
 #endif // USERFILE_H

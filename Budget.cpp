@@ -2,7 +2,7 @@
 
 void Budget::userRegistration() {
 
-    userManager.userRegistration("Users.xml");
+    userManager.userRegistration();
 }
 
 void Budget::showUsers() {
@@ -14,13 +14,13 @@ void Budget::logging() {
 
     userManager.logging();
     if (userManager.whetherUserIsLogged()) {
-        serviceManager = new ServiceManager(userManager.getIdLoggedUser(), "Incomes.xml");
+        serviceManager = new ServiceManager(userManager.getIdLoggedUser(), INCOMES_FILE_NAME);
     }
 }
 
 void Budget::passwordChange() {
 
-    userManager.passwordChange("Users.xml");
+    userManager.passwordChange();
 }
 
 void Budget::loggingOut() {
@@ -32,7 +32,7 @@ void Budget::loggingOut() {
 
 void Budget::addIncome(){
 
-    if (userManager.whetherUserIsLogged()) serviceManager -> addIncome("Incomes.xml");
+    if (userManager.whetherUserIsLogged()) serviceManager -> addIncome();
     else {
         cout << "You must be logged in to add a income." << endl;
         system("pause");
