@@ -14,7 +14,7 @@ void Budget::logging() {
 
     userManager.logging();
     if (userManager.whetherUserIsLogged()) {
-        serviceManager = new ServiceManager(userManager.getIdLoggedUser(), INCOMES_FILE_NAME);
+        serviceManager = new ServiceManager(userManager.getIdLoggedUser(), INCOMES_FILE_NAME, EXPENSES_FILE_NAME);
     }
 }
 
@@ -43,7 +43,7 @@ void Budget::addExpense(){
 
     if (userManager.whetherUserIsLogged()) serviceManager -> addExpense();
     else {
-        cout << "You must be logged in to add a income." << endl;
+        cout << "You must be logged in to add a expense." << endl;
         system("pause");
     }
 }

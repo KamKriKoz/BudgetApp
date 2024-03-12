@@ -18,7 +18,7 @@ void ServiceManager::addIncome() {
     Resources income = enterNewResourceDetails(INCOME);
     incomes.push_back(income);
 
-    resourcesFile.addToResourcesFile(income, INCOME);
+    incomesFile.addToResourcesFile(income, INCOME);
 
     cout << "Income has been added." << endl;
 
@@ -30,8 +30,10 @@ void ServiceManager::addExpense() {
     system("cls");
     cout << "ADDING NEW EXPENSE" << endl << endl;
 
-  //  Resources expense = enterNewResourceDetails(EXPENSE);
-//    expenses.push_back(expense);
+    Resources expense = enterNewResourceDetails(EXPENSE);
+    expenses.push_back(expense);
+
+    expensesFile.addToResourcesFile(expense, EXPENSE);
 
     cout << "Expense has been added." << endl;
 
@@ -96,11 +98,10 @@ Resources ServiceManager::enterNewResourceDetails(const Type &type) {
 
     switch (type) {
     case INCOME:
-        resource.resourceId = resourcesFile.getNewResourceId(INCOME);
-
+        resource.resourceId = incomesFile.getNewResourceId(INCOME);
         break;
     case EXPENSE:
-
+        resource.resourceId = expensesFile.getNewResourceId(EXPENSE);
         break;
     }
 

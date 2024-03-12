@@ -5,6 +5,11 @@ string ResourcesFile::getIncomesFileName() {
     return INCOMES_FILE_NAME;
 }
 
+string ResourcesFile::getExpensesFileName() {
+
+    return EXPENSES_FILE_NAME;
+}
+
 void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
 
     string fileName = "";
@@ -15,13 +20,13 @@ void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
         fileName = getIncomesFileName();
         resourceType = "Income";
     case EXPENSE:
-
-        break;
+        fileName = getExpensesFileName();
+        resourceType = "Expense";
     }
 
     if (!xml.Load(fileName)) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem("Incomes");
+        xml.AddElem(fileName);
     }
 
     xml.ResetPos();
@@ -38,13 +43,14 @@ void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
     xml.Save(fileName);
 }
 
-vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER) {
+vector <Resources> ResourcesFile::loadIncomesFromFile(int ID_LOGGED_USER) {
 
     Resources income;
     vector <Resources> incomes;
 
     if (!xml.Load(getIncomesFileName())) {
-        cout << "There are no incomes yet." << endl;
+        system ("cls");
+        cout << "There are no incomes yet. Incomes file has been created." << endl;
         system("pause");
     } else {
         xml.ResetPos();
@@ -80,6 +86,49 @@ vector <Resources> ResourcesFile::loadResourcesFromFile(int ID_LOGGED_USER) {
     return incomes;
 }
 
+vector <Resources> ResourcesFile::loadExpensesFromFile(int ID_LOGGED_USER) {
+
+    Resources expense;
+    vector <Resources> expenses;
+
+    if (!xml.Load(getExpensesFileName())) {
+        system ("cls");
+        cout << "There are no expenses yet. Expenses file has been created." << endl;
+        system("pause");
+    } else {
+        xml.ResetPos();
+        xml.IntoElem();
+        xml.FindElem();
+        xml.IntoElem();
+        xml.FindElem();
+
+        do {
+            xml.IntoElem();
+
+            xml.FindElem();
+            expense.resourceId = atoi(xml.GetData().c_str());
+
+            xml.FindElem();
+            expense.userId = atoi(xml.GetData().c_str());
+
+            xml.FindElem();
+            expense.date = atoi(xml.GetData().c_str());
+
+            xml.FindElem();
+            expense.item = xml.GetData();
+
+            xml.FindElem();
+            expense.amount = std::stod((xml.GetData().c_str()));
+
+            if (expense.userId == ID_LOGGED_USER) expenses.push_back(expense);
+
+            xml.OutOfElem();
+
+        } while (xml.FindElem());
+    }
+    return expenses;
+}
+
 int ResourcesFile::getNewResourceId(const Type &type) {
 
     int lastResourceId = 1;
@@ -89,7 +138,7 @@ int ResourcesFile::getNewResourceId(const Type &type) {
     case INCOME:
         fileName = getIncomesFileName();
     case EXPENSE:
-
+        fileName = getExpensesFileName();
         break;
     }
 

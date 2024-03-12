@@ -32,7 +32,7 @@ vector <User> UsersFile::loadUsersFromFile() {
     vector <User> users;
 
     if (!xml.Load(getFileName())) {
-        cout << "There are no users yet." << endl;
+        cout << "There are no users yet. Users file has been created." << endl;
         system("pause");
     } else {
         xml.ResetPos();
