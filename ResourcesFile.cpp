@@ -2,12 +2,12 @@
 
 string ResourcesFile::getIncomesFileName() {
 
-    return INCOMES_FILE_NAME;
+    return RESOURCE_FILE_NAME;
 }
 
 string ResourcesFile::getExpensesFileName() {
 
-    return EXPENSES_FILE_NAME;
+    return RESOURCE_FILE_NAME;
 }
 
 void ResourcesFile::addToResourcesFile(Resources resource, const Type &type) {
