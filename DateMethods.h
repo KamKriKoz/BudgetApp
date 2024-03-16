@@ -4,7 +4,6 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include <windows.h>
 #include "HelperMethods.h"
 
 using namespace std;
@@ -13,9 +12,14 @@ class DateMethods {
 
 public:
 
+    static SYSTEMTIME getCurrentTime();
     static string convertDateToStringFormat(int date);
     static int convertDateToInteger(string date);
-    static int getCurrentDateAsInteger(SYSTEMTIME time);
+    static int getCurrentDateAsInteger();
+    static int getCurrentMonthFirstDate();
+    static int getPreviousMonthFirstDate();
+    static int getPreviousMonthLastDate();
+    static int howManyDaysInMonth(SYSTEMTIME time);
 };
 
 #endif // DATEMETHODS_H

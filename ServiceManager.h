@@ -5,10 +5,8 @@
 
 #include <iostream>
 #include <vector>
-#include <windows.h>
 #include <fstream>
 #include <sstream>
-#include <conio.h>
 #include "Resources.h"
 #include "Type.h"
 #include "HelperMethods.h"

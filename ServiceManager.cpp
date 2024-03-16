@@ -92,8 +92,6 @@ Resources ServiceManager::enterNewResourceDetails(const Type &type) {
 
     system("cls");
     string item, amount = "";
-    SYSTEMTIME time;
-    GetSystemTime(&time);
     Resources resource;
 
     switch (type) {
@@ -106,7 +104,7 @@ Resources ServiceManager::enterNewResourceDetails(const Type &type) {
     }
 
     resource.userId = ID_LOGGED_USER;
-    resource.date = DateMethods::getCurrentDateAsInteger(time);
+    resource.date = DateMethods::getCurrentDateAsInteger();
 
     cout << "Enter name of the item: ";
     item = HelperMethods::loadLine();
