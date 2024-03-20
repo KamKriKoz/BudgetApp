@@ -17,7 +17,6 @@ public:
     static string loadLine();
     static int conversionToInt(string number);
     static int loadInteger();
-    static double loadDouble();
 };
 
 #endif // HELPERMETHODS_H

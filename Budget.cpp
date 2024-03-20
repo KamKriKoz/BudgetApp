@@ -66,11 +66,29 @@ void Budget::showExpenses(){
     }
 }
 
-void Budget::showBalance(){
+void Budget::showCurrentMonthBalance(){
 
-    if (userManager.whetherUserIsLogged()) serviceManager -> showBalance();
+    if (userManager.whetherUserIsLogged()) serviceManager -> showCurrentMonthBalance();
     else {
-        cout << "You must be logged in to show incomes." << endl;
+        cout << "You must be logged in to show current month balance." << endl;
+        system("pause");
+    }
+}
+
+void Budget::showPreviousMonthBalance(){
+
+    if (userManager.whetherUserIsLogged()) serviceManager -> showPreviousMonthBalance();
+    else {
+        cout << "You must be logged in to show previous month balance." << endl;
+        system("pause");
+    }
+}
+
+void Budget::showCustomPeriodBalance(){
+
+    if (userManager.whetherUserIsLogged()) serviceManager -> showCustomPeriodBalance();
+    else {
+        cout << "You must be logged in to show custom period balance." << endl;
         system("pause");
     }
 }
@@ -89,8 +107,10 @@ void Budget::userMenu() {
     cout << "2. Add expense." << endl;
     cout << "3. Show incomes." << endl;
     cout << "4. Show expenses." << endl;
-    cout << "5. Show balance." << endl;
-    cout << "6. Change password." << endl;
+    cout << "5. Show current month balance." << endl;
+    cout << "6. Show previous month balance." << endl;
+    cout << "7. Show custom period balance." << endl;
+    cout << "8. Change password." << endl;
     cout << "9. Log out." << endl;
 }
 

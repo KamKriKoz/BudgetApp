@@ -66,10 +66,18 @@ int main() {
                 break;
 
             case '5':
-                budget.showBalance();
+                budget.showCurrentMonthBalance();
                 break;
 
             case '6':
+                budget.showPreviousMonthBalance();
+                break;
+
+            case '7':
+                budget.showCustomPeriodBalance();
+                break;
+
+            case '8':
                 budget.passwordChange();
                 break;
 

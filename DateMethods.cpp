@@ -20,8 +20,8 @@ string DateMethods::convertDateToStringFormat(int date) {
 int DateMethods::convertDateToInteger(string date) {
 
     int dateInFormat = 0;
-    date.erase(5,1);
-    date.erase(7,1);
+    date.erase(4,1);
+    date.erase(6,1);
     dateInFormat = HelperMethods::conversionToInt(date);
 
     return dateInFormat;

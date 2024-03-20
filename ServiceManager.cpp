@@ -62,30 +62,66 @@ void ServiceManager::showExpenses() {
     system("pause");
 }
 
-void ServiceManager::showBalance() {
+void ServiceManager::showCurrentMonthBalance() {
+
+    showBalance(DateMethods::getCurrentMonthFirstDate(), DateMethods::getCurrentDateAsInteger());
+}
+
+void ServiceManager::showPreviousMonthBalance() {
+
+    showBalance(DateMethods::getPreviousMonthFirstDate(), DateMethods::getPreviousMonthLastDate());
+}
+
+void ServiceManager::showCustomPeriodBalance() {
 
     system("cls");
+    string startDate, endDate = "";
 
+    cout << "Enter start date in format yyyy-mm-dd: ";
+    startDate = HelperMethods::loadLine();
+
+    cout << "Enter end date in format yyyy-mm-dd: ";
+    endDate = HelperMethods::loadLine();
+
+    showBalance(DateMethods::convertDateToInteger(startDate), DateMethods::convertDateToInteger(endDate));
+}
+
+void ServiceManager::showBalance(int startDate, int endDate) {
+
+    system("cls");
     double balance = 0.00;
-    double incomesSum = 0.00;
-    double expensesSum = 0.00;
-
-    for (Resources resource : incomes) {
-
-        incomesSum += resource.amount;
-    }
-
-    for (Resources resource : expenses) {
-
-        expensesSum += resource.amount;
-    }
-
-    balance = incomesSum - expensesSum;
     std::cout.precision(2);
     std::cout << std::fixed;
-    cout << "Balance equals: " << balance << endl;
 
-    system("pause");
+    balance = calculateResources(startDate, endDate, INCOME) - calculateResources(startDate, endDate, EXPENSE);
+
+    cout << "The balance is: " << balance << endl << endl;
+    system ("pause");
+}
+
+double ServiceManager::calculateResources(int startDate, int endDate, const Type &type) {
+
+    double resourceSum = 0.00;
+
+    switch (type) {
+    case INCOME:
+        for (size_t i = 0; i < incomes.size(); i++) {
+            if ((incomes[i].date >= startDate) && (incomes[i].date <= endDate)) {
+                resourceSum += incomes[i].amount;
+            }
+        }
+        break;
+
+    case EXPENSE:
+        for (size_t i = 0; i < expenses.size(); i++) {
+            if ((expenses[i].date >= startDate) && (expenses[i].date <= endDate)) {
+                resourceSum += expenses[i].amount;
+            }
+        }
+        break;
+    }
+
+    return resourceSum;
 }
 
 Resources ServiceManager::enterNewResourceDetails(const Type &type) {

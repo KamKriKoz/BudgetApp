@@ -38,7 +38,11 @@ public:
     void addExpense();
     void showIncomes();
     void showExpenses();
-    void showBalance();
+    void showCurrentMonthBalance();
+    void showPreviousMonthBalance();
+    void showCustomPeriodBalance();
+    void showBalance(int startDate, int endDate);
+    double calculateResources(int startDate, int endDate, const Type &type);
 };
 
 #endif // SERVICEMANAGER_H
